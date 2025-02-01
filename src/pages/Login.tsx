@@ -3,8 +3,14 @@ import Logo from '../assets/logo.svg';
 import { CustomInput } from '../components/CustomInput';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { SecondaryButton } from '../components/SecondaryButton';
+import GoogleIcon from '@mui/icons-material/Google';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useState } from 'react';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export function Login() {
+  const [ showPassword, setShowPassword ] = useState(false);
+
   return (
     <>
       <header className='bg-black relative'>
@@ -20,7 +26,7 @@ export function Login() {
           src={ Logo } 
         />
 
-        <div className='w-full flex flex-col items-center gap-4'>
+        <div className='w-full flex flex-col items-center gap-6'>
           <div className="w-full max-w-sm flex flex-col">
             <label 
               htmlFor='email'
@@ -31,7 +37,6 @@ export function Login() {
             <CustomInput 
               id='email'
               placeholder='Digite seu email'
-
             />
           </div>
 
@@ -44,8 +49,22 @@ export function Login() {
             </label>
             <CustomInput 
               id='email'
-              type='password'
+              type={ showPassword ? 'text' : 'password' }
               placeholder='Digite sua senha'
+              icon={ 
+                showPassword ? 
+                  <VisibilityOffIcon 
+                    htmlColor={'black'} 
+                    fontSize={ 'large' }
+                  /> 
+                :
+                  <VisibilityIcon 
+                    htmlColor={'black'} 
+                    fontSize={ 'large' }
+                  /> 
+              }
+              setShowPassword={ setShowPassword }
+              showPassword={ showPassword }
             />
             <span className='ml-auto mt-1 underline decoration-solid'>
               Esqueci minha senha
@@ -62,7 +81,14 @@ export function Login() {
             </div>
           </div>
 
-          <SecondaryButton />
+          <SecondaryButton 
+            icon={ 
+              <GoogleIcon 
+                htmlColor={'white'} 
+                fontSize={ 'large' }
+              /> 
+            } 
+          />
         </div>
 
         <div className='h-32 w-full bg-tertiary absolute bottom-0 rounded-t-2xl flex items-center justify-center'>
