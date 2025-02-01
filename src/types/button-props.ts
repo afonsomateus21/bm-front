@@ -2,5 +2,5 @@ import { AriaAttributes, ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } fr
 
 export interface ButtonProps extends 
 DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, AriaAttributes  {
-	icon?: ReactNode;
+	icon?: ReactNode | string;
 }
