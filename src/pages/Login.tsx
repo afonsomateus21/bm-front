@@ -49,60 +49,37 @@ export function Login() {
         />
 
         <form 
-          className='w-full flex flex-col items-center gap-6'
+          className='w-full flex flex-col items-center gap-5'
           onSubmit={ handleSubmit(onSubmit) }
         >
-          <div className="w-full max-w-sm flex flex-col">
-            <label 
-              htmlFor='email'
-              className='text-tertiary font-bold'
-            >
-              E-mail
-            </label>
-            <CustomInput 
-              id='email'
-              placeholder='Digite seu email'
-              { ...register("email") }
-            />
-            <p className='text-red-500'>
-              { errors?.email?.message }
-            </p>
-          </div>
+          <CustomInput  
+            title='Email'
+            placeholder='Digite seu email'
+            { ...register("email") }
+            errors={ errors?.email?.message }
+          />
 
-          <div className="w-full max-w-sm flex flex-col">
-            <label 
-              htmlFor='password'
-              className='text-tertiary font-bold'
-            >
-              Senha
-            </label>
-            <CustomInput 
-              id='password'
-              type={ showPassword ? 'text' : 'password' }
-              placeholder='Digite sua senha'
-              icon={ 
-                showPassword ? 
-                  <VisibilityOffIcon 
-                    htmlColor={'black'} 
-                    fontSize={ 'large' }
-                  /> 
-                :
-                  <VisibilityIcon 
-                    htmlColor={'black'} 
-                    fontSize={ 'large' }
-                  /> 
-              }
-              setShowPassword={ setShowPassword }
-              showPassword={ showPassword }
-              { ...register("password") }
-            />
-            <p className='text-red-500'>
-              { errors?.password?.message }
-            </p>
-            <span className='ml-auto mt-1 underline decoration-solid'>
-              Esqueci minha senha
-            </span>
-          </div>
+          <CustomInput 
+            title='Senha'
+            type={ showPassword ? 'text' : 'password' }
+            placeholder='Digite sua senha'
+            icon={ 
+              showPassword ? 
+                <VisibilityOffIcon 
+                  htmlColor={'black'} 
+                  fontSize={ 'large' }
+                /> 
+              :
+                <VisibilityIcon 
+                  htmlColor={'black'} 
+                  fontSize={ 'large' }
+                /> 
+            }
+            setShowPassword={ setShowPassword }
+            showPassword={ showPassword }
+            { ...register("password") }
+            errors={ errors?.password?.message }
+          />
 
           <PrimaryButton type='submit' />
 
