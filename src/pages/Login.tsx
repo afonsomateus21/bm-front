@@ -7,9 +7,31 @@ import GoogleIcon from '@mui/icons-material/Google';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useState } from 'react';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useForm } from "react-hook-form";
+import { LoginFormInputProps } from '../types/login-form-input-props';
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from '../utils/validations/loginSchema';
 
 export function Login() {
+  const { 
+    register, 
+    handleSubmit, 
+    setValue,
+    formState: { errors } 
+  } = useForm<LoginFormInputProps>({ resolver: yupResolver(loginSchema) });
   const [ showPassword, setShowPassword ] = useState(false);
+
+  async function onSubmit(data: LoginFormInputProps) {
+    const userPayload = {
+      email: data.email,
+      password: data.password,
+    }
+
+    console.log(userPayload);
+
+    setValue('email', '');
+    setValue('password', '');
+  } 
 
   return (
     <>
@@ -26,7 +48,10 @@ export function Login() {
           src={ Logo } 
         />
 
-        <div className='w-full flex flex-col items-center gap-6'>
+        <form 
+          className='w-full flex flex-col items-center gap-6'
+          onSubmit={ handleSubmit(onSubmit) }
+        >
           <div className="w-full max-w-sm flex flex-col">
             <label 
               htmlFor='email'
@@ -37,18 +62,22 @@ export function Login() {
             <CustomInput 
               id='email'
               placeholder='Digite seu email'
+              { ...register("email") }
             />
+            <p className='text-red-500'>
+              { errors?.email?.message }
+            </p>
           </div>
 
           <div className="w-full max-w-sm flex flex-col">
             <label 
-              htmlFor='email'
+              htmlFor='password'
               className='text-tertiary font-bold'
             >
               Senha
             </label>
             <CustomInput 
-              id='email'
+              id='password'
               type={ showPassword ? 'text' : 'password' }
               placeholder='Digite sua senha'
               icon={ 
@@ -65,13 +94,17 @@ export function Login() {
               }
               setShowPassword={ setShowPassword }
               showPassword={ showPassword }
+              { ...register("password") }
             />
+            <p className='text-red-500'>
+              { errors?.password?.message }
+            </p>
             <span className='ml-auto mt-1 underline decoration-solid'>
               Esqueci minha senha
             </span>
           </div>
 
-          <PrimaryButton />
+          <PrimaryButton type='submit' />
 
           <div className="w-full flex items-center">
             <div className="w-full border-b border-black relative">
@@ -89,7 +122,7 @@ export function Login() {
               /> 
             } 
           />
-        </div>
+        </form>
 
         <div className='h-32 w-full bg-tertiary absolute bottom-0 rounded-t-2xl flex items-center justify-center'>
           <span className='text-primary text-lg'>
