@@ -2,8 +2,13 @@ import { CustomInput } from "../components/CustomInput";
 import UploadFileRoundedIcon from '@mui/icons-material/UploadFileRounded';
 import { PrimaryButton } from "../components/PrimaryButton";
 import { Link } from "react-router";
+import { useShowPassword } from "../hooks/useShowPassword";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 export function UserRegister() {
+  const { showPassword } = useShowPassword();
+
   return (
     <main className="h-screen flex flex-col justify-evenly overflow-hidden">
       <Link to="/">
@@ -54,13 +59,37 @@ export function UserRegister() {
           />
           <CustomInput 
             title="Senha" 
-            type="password" 
+            type={ showPassword ? "text" : "password" } 
             placeholder="Digite sua senha"
+            icon={ 
+              showPassword ? 
+                <VisibilityOffIcon 
+                  htmlColor={'black'} 
+                  fontSize={ 'large' }
+                /> 
+              :
+                <VisibilityIcon 
+                  htmlColor={'black'} 
+                  fontSize={ 'large' }
+                /> 
+            }
           />
           <CustomInput 
             title="Confirmar Senha" 
-            type="password" 
+            type={ showPassword ? "text" : "password" }
             placeholder="Confirme sua senha"
+            icon={ 
+              showPassword ? 
+                <VisibilityOffIcon 
+                  htmlColor={'black'} 
+                  fontSize={ 'large' }
+                /> 
+              :
+                <VisibilityIcon 
+                  htmlColor={'black'} 
+                  fontSize={ 'large' }
+                /> 
+            }
           />
         </div>
 
