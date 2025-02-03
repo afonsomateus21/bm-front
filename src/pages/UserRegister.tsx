@@ -12,7 +12,7 @@ export function UserRegister() {
   return (
     <main className="h-screen flex flex-col justify-evenly overflow-hidden">
       <Link to="/">
-        <span className="underline text-xl ml-6">Voltar</span>
+        <span className="underline text-md ml-6">Voltar</span>
       </Link>
       <h1 className="text-4xl text-center font-bold">Cadastro</h1>
       <div className="h-4/5 flex flex-col items-center justify-evenly">
@@ -22,7 +22,7 @@ export function UserRegister() {
           >
             <UploadFileRoundedIcon 
               sx={{ 
-                fontSize: 100, 
+                fontSize: 80, 
                 color: '#333333',
                 position: 'absolute',
                 top: '50%',
@@ -36,10 +36,10 @@ export function UserRegister() {
             />
           </label>
 
-          <strong className="mt-2 text-tertiary">Foto de Perfil</strong>
+          <strong className="mt-5 text-tertiary">Foto de Perfil</strong>
         </div>
 
-        <div className="w-full flex flex-col items-center gap-4 h-[500px] overflow-y-scroll p-2">
+        <div className="w-full flex flex-col items-center gap-4 h-[500px] overflow-y-scroll p-2 gap-6 mt-5">
           <CustomInput 
             title="Nome" 
             placeholder="Digite seu nome"
@@ -64,12 +64,12 @@ export function UserRegister() {
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 
-                  htmlColor={'black'} 
+                  htmlColor={'gray'} 
                   fontSize={ 'large' }
                 /> 
               :
                 <VisibilityIcon 
-                  htmlColor={'black'} 
+                  htmlColor={'gray'} 
                   fontSize={ 'large' }
                 /> 
             }
@@ -81,12 +81,12 @@ export function UserRegister() {
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 
-                  htmlColor={'black'} 
+                  htmlColor={'gray'} 
                   fontSize={ 'large' }
                 /> 
               :
                 <VisibilityIcon 
-                  htmlColor={'black'} 
+                  htmlColor={'gray'} 
                   fontSize={ 'large' }
                 /> 
             }
