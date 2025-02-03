@@ -1,9 +1,16 @@
 import { Ref, forwardRef } from "react";
 import { InputProps } from "../types/input-props";
+import { useShowPassword } from "../hooks/useShowPassword";
 
 function Input({ 
-  title, icon = null, setShowPassword, showPassword, errors, ...rest 
+  title, icon = null, errors, ...rest 
 }: InputProps, ref: Ref<HTMLInputElement>) {
+  const { handleShowPassword } = useShowPassword();
+
+  function handleChangePasswordVisibility() {
+    handleShowPassword()
+  }
+
   return (
     <div className="w-full max-w-sm flex flex-col">
       <label 
@@ -21,10 +28,10 @@ function Input({
         />
         <div 
           className="absolute right-2"
-          onClick={ () => setShowPassword && setShowPassword(!showPassword) }
+          onClick={ () => handleChangePasswordVisibility() }
         >
           {
-            icon !== null
+            icon
             ? icon
             : null
           }
