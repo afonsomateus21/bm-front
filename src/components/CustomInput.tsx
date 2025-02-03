@@ -23,7 +23,7 @@ function Input({
         <input 
           id={ title.split(' ')[0].toLowerCase() }
           {...rest}
-          className="outline-none border-none w-full p-4" 
+          className="outline-none border-none w-full p-4 text-xl placeholder:font-bold placeholder:opacity-40" 
           ref={ref}
         />
         <div 
