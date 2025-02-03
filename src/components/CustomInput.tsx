@@ -27,7 +27,7 @@ function Input({
           ref={ref}
         />
         <div 
-          className="absolute right-2"
+          className="absolute right-4"
           onClick={ () => handleChangePasswordVisibility() }
         >
           {

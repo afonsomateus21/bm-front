@@ -43,14 +43,14 @@ export function Login() {
         />
       </header>
 
-      <main className='h-full flex flex-col items-center p-4 relative'>
+      <main className='h-full flex flex-col items-center p-4 relative pt-10'>
         <img 
           className='size-[250px]'
           src={ Logo } 
         />
 
         <form 
-          className='w-full flex flex-col items-center gap-5'
+          className='w-full flex flex-col items-center gap-7'
           onSubmit={ handleSubmit(onSubmit) }
         >
           <CustomInput  
@@ -67,12 +67,12 @@ export function Login() {
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 
-                  htmlColor={'black'} 
+                  htmlColor={'gray'} 
                   fontSize={ 'large' }
                 /> 
               :
                 <VisibilityIcon 
-                  htmlColor={'black'} 
+                  htmlColor={'gray'} 
                   fontSize={ 'large' }
                 /> 
             }
@@ -84,8 +84,8 @@ export function Login() {
 
           <div className="w-full flex items-center">
             <div className="w-full border-b border-black relative">
-              <span className="absolute left-1/2 -translate-x-1/2 -top-3 bg-primary px-5 whitespace-nowrap text-secondary">
-                Ou entrar com
+              <span className="absolute left-1/2 -translate-x-1/2 -top-3 bg-primary px-5 whitespace-nowrap text-secondary text-sm">
+                ou entrar com
               </span>
             </div>
           </div>
@@ -101,7 +101,7 @@ export function Login() {
         </form>
 
         <div className='h-32 w-full bg-tertiary absolute bottom-0 rounded-t-2xl flex items-center justify-center'>
-          <span className='text-primary text-lg'>
+          <span className='text-primary text-sm'>
             Ainda não tem uma conta? Faça 
             <strong>
               <Link
