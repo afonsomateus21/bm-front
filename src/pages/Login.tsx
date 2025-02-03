@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { LoginFormInputProps } from '../types/login-form-input-props';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from '../utils/validations/loginSchema';
+import { Link } from 'react-router';
 
 export function Login() {
   const { 
@@ -105,12 +106,12 @@ export function Login() {
           <span className='text-primary text-lg'>
             Ainda não tem uma conta? Faça 
             <strong>
-              <a 
-                href=""
+              <Link
+                to="/register"
                 className='ml-1 underline decoration-solid'
               >
                 seu cadastro
-              </a>
+              </Link>
             </strong>
           </span>
         </div>
