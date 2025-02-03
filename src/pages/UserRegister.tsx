@@ -9,7 +9,7 @@ export function UserRegister() {
       <Link to="/">
         <span className="underline text-xl ml-6">Voltar</span>
       </Link>
-      <h1 className="text-4xl text-center">Cadastro</h1>
+      <h1 className="text-4xl text-center font-bold">Cadastro</h1>
       <div className="h-4/5 flex flex-col items-center justify-evenly">
         <div className="flex flex-col items-center">
           <label 
