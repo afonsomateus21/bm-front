@@ -5,13 +5,13 @@ import { PrimaryButton } from '../components/PrimaryButton';
 import { SecondaryButton } from '../components/SecondaryButton';
 import GoogleIcon from '@mui/icons-material/Google';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { useState } from 'react';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useForm } from "react-hook-form";
 import { LoginFormInputProps } from '../types/login-form-input-props';
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from '../utils/validations/loginSchema';
 import { Link } from 'react-router';
+import { useShowPassword } from '../hooks/useShowPassword';
 
 export function Login() {
   const { 
@@ -20,7 +20,7 @@ export function Login() {
     setValue,
     formState: { errors } 
   } = useForm<LoginFormInputProps>({ resolver: yupResolver(loginSchema) });
-  const [ showPassword, setShowPassword ] = useState(false);
+  const { showPassword } = useShowPassword();
 
   async function onSubmit(data: LoginFormInputProps) {
     const userPayload = {
@@ -76,8 +76,6 @@ export function Login() {
                   fontSize={ 'large' }
                 /> 
             }
-            setShowPassword={ setShowPassword }
-            showPassword={ showPassword }
             { ...register("password") }
             errors={ errors?.password?.message }
           />
