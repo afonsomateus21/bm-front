@@ -81,7 +81,7 @@ export function Login() {
             errors={ errors?.password?.message }
           />
 
-          <PrimaryButton type='submit' />
+          <PrimaryButton type='submit' title="Cadastrar" />
 
           <div className="w-full flex items-center">
             <div className="w-full border-b border-black relative">
