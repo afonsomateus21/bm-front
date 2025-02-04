@@ -5,9 +5,57 @@ import { Link } from "react-router";
 import { useShowPassword } from "../hooks/useShowPassword";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { ChangeEvent, useState } from "react";
+import { useForm } from "react-hook-form";
+import { formatPhone } from "../utils/formats/formatPhone";
+import { RegisterFormInputProps } from "../types/register-form-input-props";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { registerSchema } from "../utils/validations/registerSchema";
 
 export function UserRegister() {
+  const { 
+    register, 
+    setValue, 
+    handleSubmit,
+    watch,
+    formState: { errors }
+  } = useForm<RegisterFormInputProps>({
+    defaultValues: {
+      firstName: "",
+      lastName: ""
+    },
+    resolver: yupResolver(registerSchema)
+  });
   const { showPassword } = useShowPassword();
+  const [ formattedPhone, setFormattedPhone ] = useState("");
+
+  const firstName = watch("firstName", "");
+  const lastName = watch("lastName", "");
+
+  function handleChangePhone(event: ChangeEvent<HTMLInputElement>) {
+    const formattedValue = formatPhone(event.target.value);
+    setFormattedPhone(formattedValue);
+    setValue("phone", formattedValue)
+  }
+
+  function handleTextChange(field: keyof RegisterFormInputProps, value: string) {
+    const onlyLetters = value.replace(/\d/g, "");
+    setValue(field, onlyLetters);
+  }
+
+  function onSubmit(data: RegisterFormInputProps) {
+    console.log('entrou');
+    console.log(data);
+    const userPayload = {
+      email: data.email,
+      password: data.password,
+    }
+
+    console.log(userPayload);
+
+    setValue('email', '');
+    setValue('password', '');
+  } 
 
   return (
     <main className="h-screen flex flex-col justify-evenly overflow-hidden">
@@ -15,7 +63,10 @@ export function UserRegister() {
         <span className="underline text-md ml-6">Voltar</span>
       </Link>
       <h1 className="text-4xl text-center font-bold">Cadastro</h1>
-      <div className="h-4/5 flex flex-col items-center justify-evenly">
+      <form 
+        className="h-4/5 flex flex-col items-center justify-evenly"
+        onSubmit={ handleSubmit(onSubmit) }
+      >
         <div className="flex flex-col items-center">
           <label 
             className="border-2 border-secondary border-dashed rounded-xl w-40 h-40 cursor-pointer relative shadow-xl"
@@ -39,28 +90,44 @@ export function UserRegister() {
           <strong className="mt-5 text-tertiary">Foto de Perfil</strong>
         </div>
 
-        <div className="w-full flex flex-col items-center gap-4 h-[500px] overflow-y-scroll p-2 gap-6 mt-5">
+        <div className="w-full flex flex-col items-center h-[500px] overflow-y-scroll p-2 gap-6 mt-5">
           <CustomInput 
             title="Nome" 
             placeholder="Digite seu nome"
+            value={firstName}
+            { ...register("firstName") }
+            onChange={(e) => handleTextChange("firstName", e.target.value)}
+            errors={ errors?.firstName?.message }
           />
           <CustomInput 
             title="Sobrenome" 
             placeholder="Digite seu sobrenome"
+            value={lastName}
+            { ...register("lastName") }
+            onChange={(e) => handleTextChange("lastName", e.target.value)}
+            errors={ errors?.lastName?.message }
           />
           <CustomInput 
             title="Email" 
             type="email" 
             placeholder="Digite seu email"
+            { ...register("email") }
+            errors={ errors?.email?.message }
           />
           <CustomInput 
             title="Telefone" 
             placeholder="Digite seu telefone"
+            value={ formattedPhone }
+            { ...register("phone") }
+            onChange={ handleChangePhone }
+            maxLength={ 15 }
+            errors={ errors?.phone?.message }
           />
           <CustomInput 
             title="Senha" 
             type={ showPassword ? "text" : "password" } 
             placeholder="Digite sua senha"
+            { ...register("password") }
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 
@@ -73,11 +140,13 @@ export function UserRegister() {
                   fontSize={ 'large' }
                 /> 
             }
+            errors={ errors?.password?.message }
           />
           <CustomInput 
             title="Confirmar Senha" 
             type={ showPassword ? "text" : "password" }
             placeholder="Confirme sua senha"
+            { ...register("confirmPassword") }
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 
@@ -90,13 +159,14 @@ export function UserRegister() {
                   fontSize={ 'large' }
                 /> 
             }
+            errors={ errors?.confirmPassword?.message }
           />
         </div>
 
         <div className="w-[90%] mt-8">
-          <PrimaryButton title="Cadastrar" />
+          <PrimaryButton type="submit" title="Cadastrar" />
         </div>
-      </div>
+      </form>
     </main>
   );
 }
