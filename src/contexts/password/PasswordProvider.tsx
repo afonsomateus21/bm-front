@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PasswordProviderProps } from "../../types/password-provider-props";
+import { PasswordProviderProps } from "../../types";
 import { PasswordContext } from "./PasswordContext";
 
 export const PasswordProvider = ({ children }: PasswordProviderProps) => {

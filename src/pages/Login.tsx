@@ -1,17 +1,15 @@
 import Shape from '../assets/shape.svg';
 import Logo from '../assets/logo.svg';
-import { CustomInput } from '../components/CustomInput';
-import { PrimaryButton } from '../components/PrimaryButton';
-import { SecondaryButton } from '../components/SecondaryButton';
 import GoogleIcon from '@mui/icons-material/Google';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useForm } from "react-hook-form";
-import { LoginFormInputProps } from '../types/login-form-input-props';
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginSchema } from '../utils/validations/loginSchema';
 import { Link } from 'react-router';
-import { useShowPassword } from '../hooks/useShowPassword';
+import { CustomInput, PrimaryButton, SecondaryButton } from '../components';
+import { useShowPassword } from '../hooks';
+import { LoginFormInputProps } from '../types';
+import { loginSchema } from '../utils';
 
 export function Login() {
   const { 

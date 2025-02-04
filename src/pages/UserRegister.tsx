@@ -1,16 +1,14 @@
-import { CustomInput } from "../components/CustomInput";
 import UploadFileRoundedIcon from '@mui/icons-material/UploadFileRounded';
-import { PrimaryButton } from "../components/PrimaryButton";
 import { Link } from "react-router";
-import { useShowPassword } from "../hooks/useShowPassword";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
-import { formatPhone } from "../utils/formats/formatPhone";
-import { RegisterFormInputProps } from "../types/register-form-input-props";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registerSchema } from "../utils/validations/registerSchema";
+import { CustomInput, PrimaryButton } from '../components';
+import { RegisterFormInputProps } from '../types';
+import { formatPhone, registerSchema } from '../utils';
+import { useShowPassword } from '../hooks';
 
 export function UserRegister() {
   const { 
@@ -96,7 +94,7 @@ export function UserRegister() {
             placeholder="Digite seu nome"
             value={firstName}
             { ...register("firstName") }
-            onChange={(e) => handleTextChange("firstName", e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("firstName", e.target.value)}
             errors={ errors?.firstName?.message }
           />
           <CustomInput 
@@ -104,7 +102,7 @@ export function UserRegister() {
             placeholder="Digite seu sobrenome"
             value={lastName}
             { ...register("lastName") }
-            onChange={(e) => handleTextChange("lastName", e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("lastName", e.target.value)}
             errors={ errors?.lastName?.message }
           />
           <CustomInput 

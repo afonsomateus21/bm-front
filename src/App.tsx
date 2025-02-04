@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router';
 import './index.css'
 import { router } from './routes';
-import { PasswordProvider } from './contexts/password/PasswordProvider';
+import { PasswordProvider } from './contexts';
 
 function App() {
   return (

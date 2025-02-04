@@ -1,6 +1,6 @@
 import { Ref, forwardRef } from "react";
-import { InputProps } from "../types/input-props";
-import { useShowPassword } from "../hooks/useShowPassword";
+import { useShowPassword } from "../../hooks";
+import { InputProps } from "../../types";
 
 function Input({ 
   title, icon = null, errors, ...rest 

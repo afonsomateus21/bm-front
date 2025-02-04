@@ -1,4 +1,4 @@
-import { ButtonProps } from "../types/button-props";
+import { ButtonProps } from "../../types";
 
 export function PrimaryButton({ title, ...rest }: ButtonProps) {
   return(
