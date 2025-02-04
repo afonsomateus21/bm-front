@@ -56,6 +56,7 @@ export function Login() {
           <CustomInput  
             title='Email'
             placeholder='Digite seu email'
+            required
             { ...register("email") }
             errors={ errors?.email?.message }
           />
@@ -64,6 +65,7 @@ export function Login() {
             title='Senha'
             type={ showPassword ? 'text' : 'password' }
             placeholder='Digite sua senha'
+            required
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 

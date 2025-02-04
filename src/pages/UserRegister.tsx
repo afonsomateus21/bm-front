@@ -95,6 +95,7 @@ export function UserRegister() {
             title="Nome" 
             placeholder="Digite seu nome"
             value={firstName}
+            required
             { ...register("firstName") }
             onChange={(e) => handleTextChange("firstName", e.target.value)}
             errors={ errors?.firstName?.message }
@@ -103,6 +104,7 @@ export function UserRegister() {
             title="Sobrenome" 
             placeholder="Digite seu sobrenome"
             value={lastName}
+            required
             { ...register("lastName") }
             onChange={(e) => handleTextChange("lastName", e.target.value)}
             errors={ errors?.lastName?.message }
@@ -111,6 +113,7 @@ export function UserRegister() {
             title="Email" 
             type="email" 
             placeholder="Digite seu email"
+            required
             { ...register("email") }
             errors={ errors?.email?.message }
           />
@@ -127,6 +130,7 @@ export function UserRegister() {
             title="Senha" 
             type={ showPassword ? "text" : "password" } 
             placeholder="Digite sua senha"
+            required
             { ...register("password") }
             icon={ 
               showPassword ? 
@@ -146,6 +150,7 @@ export function UserRegister() {
             title="Confirmar Senha" 
             type={ showPassword ? "text" : "password" }
             placeholder="Confirme sua senha"
+            required
             { ...register("confirmPassword") }
             icon={ 
               showPassword ? 
