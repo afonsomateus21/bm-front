@@ -5,7 +5,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { CustomInput, PrimaryButton } from '../components';
+import { FormInput, FlatButton } from '../components';
 import { RegisterFormInputProps } from '../types';
 import { formatPhone, registerSchema } from '../utils';
 import { useShowPassword } from '../hooks';
@@ -89,7 +89,7 @@ export function UserRegister() {
         </div>
 
         <div className="w-full flex flex-col items-center h-[500px] overflow-y-scroll p-2 gap-6 mt-5">
-          <CustomInput 
+          <FormInput 
             title="Nome" 
             placeholder="Digite seu nome"
             value={firstName}
@@ -97,7 +97,7 @@ export function UserRegister() {
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("firstName", e.target.value)}
             errors={ errors?.firstName?.message }
           />
-          <CustomInput 
+          <FormInput 
             title="Sobrenome" 
             placeholder="Digite seu sobrenome"
             value={lastName}
@@ -105,14 +105,14 @@ export function UserRegister() {
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("lastName", e.target.value)}
             errors={ errors?.lastName?.message }
           />
-          <CustomInput 
+          <FormInput 
             title="Email" 
             type="email" 
             placeholder="Digite seu email"
             { ...register("email") }
             errors={ errors?.email?.message }
           />
-          <CustomInput 
+          <FormInput 
             title="Telefone" 
             placeholder="Digite seu telefone"
             value={ formattedPhone }
@@ -121,7 +121,7 @@ export function UserRegister() {
             maxLength={ 15 }
             errors={ errors?.phone?.message }
           />
-          <CustomInput 
+          <FormInput 
             title="Senha" 
             type={ showPassword ? "text" : "password" } 
             placeholder="Digite sua senha"
@@ -140,7 +140,7 @@ export function UserRegister() {
             }
             errors={ errors?.password?.message }
           />
-          <CustomInput 
+          <FormInput 
             title="Confirmar Senha" 
             type={ showPassword ? "text" : "password" }
             placeholder="Confirme sua senha"
@@ -162,7 +162,7 @@ export function UserRegister() {
         </div>
 
         <div className="w-[90%] mt-8">
-          <PrimaryButton type="submit" title="Cadastrar" />
+          <FlatButton type="submit" title="Cadastrar" />
         </div>
       </form>
     </main>
