@@ -1,1 +1,1 @@
-export { CustomInput } from "./CustomInput"
+export { FormInput } from "./FormInput"
