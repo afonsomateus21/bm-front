@@ -6,7 +6,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from 'react-router';
-import { CustomInput, PrimaryButton, SecondaryButton } from '../components';
+import { FormInput, FlatButton, IconButton } from '../components';
 import { useShowPassword } from '../hooks';
 import { LoginFormInputProps } from '../types';
 import { loginSchema } from '../utils';
@@ -51,14 +51,14 @@ export function Login() {
           className='w-full flex flex-col items-center gap-7'
           onSubmit={ handleSubmit(onSubmit) }
         >
-          <CustomInput  
+          <FormInput  
             title='Email'
             placeholder='Digite seu email'
             { ...register("email") }
             errors={ errors?.email?.message }
           />
 
-          <CustomInput 
+          <FormInput 
             title='Senha'
             type={ showPassword ? 'text' : 'password' }
             placeholder='Digite sua senha'
@@ -78,7 +78,7 @@ export function Login() {
             errors={ errors?.password?.message }
           />
 
-          <PrimaryButton type='submit' title="Entrar" />
+          <FlatButton type='submit' title="Entrar" />
 
           <div className="w-full flex items-center">
             <div className="w-full border-b border-black relative">
@@ -88,7 +88,7 @@ export function Login() {
             </div>
           </div>
 
-          <SecondaryButton 
+          <IconButton 
             icon={ 
               <GoogleIcon 
                 htmlColor={'white'} 
