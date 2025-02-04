@@ -1,2 +1,2 @@
-export { PrimaryButton } from "./PrimaryButton"
-export { SecondaryButton } from "./SecondaryButton"
+export { FlatButton } from "./FlatButton"
+export { IconButton } from "./IconButton"
