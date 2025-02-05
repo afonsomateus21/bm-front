@@ -126,6 +126,7 @@ export function UserRegister() {
           <FormInput 
             title={ `${t('Common.Form.Fields.Phone')}` } 
             placeholder={ `${t('Common.Form.Placeholders.Phone')}` }
+            required
             value={ formattedPhone }
             { ...register("phone") }
             onChange={ handleChangePhone }
