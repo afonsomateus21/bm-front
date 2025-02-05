@@ -10,14 +10,16 @@ import { FormInput, FlatButton, IconButton } from '../components';
 import { useShowPassword } from '../hooks';
 import { LoginFormInputProps } from '../types';
 import { loginSchema } from '../utils';
+import { useTranslation } from 'react-i18next';
 
 export function Login() {
+  const { t } = useTranslation();
   const { 
     register, 
     handleSubmit, 
     setValue,
     formState: { errors } 
-  } = useForm<LoginFormInputProps>({ resolver: yupResolver(loginSchema) });
+  } = useForm<LoginFormInputProps>({ resolver: yupResolver(loginSchema(t)) });
   const { showPassword } = useShowPassword();
 
   async function onSubmit(data: LoginFormInputProps) {
@@ -52,16 +54,16 @@ export function Login() {
           onSubmit={ handleSubmit(onSubmit) }
         >
           <FormInput  
-            title='Email'
-            placeholder='Digite seu email'
+            title={ `${t('Common.Form.Fields.Email')}` }
+            placeholder={ `${t('Common.Form.Placeholders.Email')}` }
             { ...register("email") }
             errors={ errors?.email?.message }
           />
 
           <FormInput 
-            title='Senha'
+            title={ `${t('Common.Form.Fields.Password')}` }
             type={ showPassword ? 'text' : 'password' }
-            placeholder='Digite sua senha'
+            placeholder={ `${t('Common.Form.Placeholders.Password')}` }
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 
@@ -83,7 +85,7 @@ export function Login() {
           <div className="w-full flex items-center">
             <div className="w-full border-b border-black relative">
               <span className="absolute left-1/2 -translate-x-1/2 -top-3 bg-primary px-5 whitespace-nowrap text-secondary text-lg">
-                ou entrar com
+                { `${t('Login.Texts.LoginWith')}` }
               </span>
             </div>
           </div>
@@ -100,13 +102,13 @@ export function Login() {
 
         <div className='h-32 w-full bg-tertiary absolute bottom-0 rounded-t-2xl flex items-center justify-center'>
           <span className='text-primary text-sm'>
-            Ainda não tem uma conta? Faça 
+            { `${t('Login.Texts.DontHaveAnAccount')}` }
             <strong>
               <Link
                 to="/register"
                 className='ml-1 underline decoration-solid'
               >
-                seu cadastro
+                { `${t('Login.Texts.YourRegistration')}` }
               </Link>
             </strong>
           </span>
