@@ -101,6 +101,7 @@ export function UserRegister() {
             title={ `${t('Common.Form.Fields.FirstName')}` }
             placeholder={ `${t('Common.Form.Placeholders.FirstName')}` }
             value={firstName}
+            required
             { ...register("firstName") }
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("firstName", e.target.value)}
             errors={ errors?.firstName?.message }
@@ -109,6 +110,7 @@ export function UserRegister() {
             title={ `${t('Common.Form.Fields.LastName')}` } 
             placeholder={ `${t('Common.Form.Placeholders.LastName')}` }
             value={lastName}
+            required
             { ...register("lastName") }
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("lastName", e.target.value)}
             errors={ errors?.lastName?.message }
@@ -117,6 +119,7 @@ export function UserRegister() {
             title={ `${t('Common.Form.Fields.Email')}` } 
             type="email" 
             placeholder={ `${t('Common.Form.Placeholders.Email')}` }
+            required
             { ...register("email") }
             errors={ errors?.email?.message }
           />
@@ -133,6 +136,7 @@ export function UserRegister() {
             title={ `${t('Common.Form.Fields.Password')}` } 
             type={ showPassword ? "text" : "password" } 
             placeholder={ `${t('Common.Form.Placeholders.Password')}` }
+            required
             { ...register("password") }
             icon={ 
               showPassword ? 
@@ -152,6 +156,7 @@ export function UserRegister() {
             title={ `${t('Common.Form.Fields.PasswordConfirmation')}` } 
             type={ showPassword ? "text" : "password" }
             placeholder={ `${t('Common.Form.Placeholders.PasswordConfirmation')}` }
+            required
             { ...register("confirmPassword") }
             icon={ 
               showPassword ? 

@@ -56,6 +56,7 @@ export function Login() {
           <FormInput  
             title={ `${t('Common.Form.Fields.Email')}` }
             placeholder={ `${t('Common.Form.Placeholders.Email')}` }
+            required
             { ...register("email") }
             errors={ errors?.email?.message }
           />
@@ -64,6 +65,7 @@ export function Login() {
             title={ `${t('Common.Form.Fields.Password')}` }
             type={ showPassword ? 'text' : 'password' }
             placeholder={ `${t('Common.Form.Placeholders.Password')}` }
+            required
             icon={ 
               showPassword ? 
                 <VisibilityOffIcon 
