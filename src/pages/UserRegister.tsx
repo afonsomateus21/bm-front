@@ -9,8 +9,10 @@ import { FormInput, FlatButton } from '../components';
 import { RegisterFormInputProps } from '../types';
 import { formatPhone, registerSchema } from '../utils';
 import { useShowPassword } from '../hooks';
+import { useTranslation } from 'react-i18next';
 
 export function UserRegister() {
+  const { t } = useTranslation();
   const { 
     register, 
     setValue, 
@@ -22,7 +24,7 @@ export function UserRegister() {
       firstName: "",
       lastName: ""
     },
-    resolver: yupResolver(registerSchema)
+    resolver: yupResolver(registerSchema(t))
   });
   const { showPassword } = useShowPassword();
   const [ formattedPhone, setFormattedPhone ] = useState("");
@@ -58,9 +60,13 @@ export function UserRegister() {
   return (
     <main className="h-screen flex flex-col justify-evenly overflow-hidden">
       <Link to="/">
-        <span className="underline text-md ml-6">Voltar</span>
+        <span className="underline text-md ml-6">
+          { t('Common.Buttons.Back') }
+        </span>
       </Link>
-      <h1 className="text-4xl text-center font-bold">Cadastro</h1>
+      <h1 className="text-4xl text-center font-bold">
+        { t('Common.Register.Title') }
+      </h1>
       <form 
         className="h-4/5 flex flex-col items-center justify-evenly"
         onSubmit={ handleSubmit(onSubmit) }
@@ -85,36 +91,38 @@ export function UserRegister() {
             />
           </label>
 
-          <strong className="mt-5 text-tertiary">Foto de Perfil</strong>
+          <strong className="mt-5 text-tertiary">
+            { t('Common.Register.ProfilePhoto') }
+          </strong>
         </div>
 
         <div className="w-full flex flex-col items-center h-[500px] overflow-y-scroll p-2 gap-6 mt-5">
           <FormInput 
-            title="Nome" 
-            placeholder="Digite seu nome"
+            title={ `${t('Common.Form.Fields.FirstName')}` }
+            placeholder={ `${t('Common.Form.Placeholders.FirstName')}` }
             value={firstName}
             { ...register("firstName") }
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("firstName", e.target.value)}
             errors={ errors?.firstName?.message }
           />
           <FormInput 
-            title="Sobrenome" 
-            placeholder="Digite seu sobrenome"
+            title={ `${t('Common.Form.Fields.LastName')}` } 
+            placeholder={ `${t('Common.Form.Placeholders.LastName')}` }
             value={lastName}
             { ...register("lastName") }
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleTextChange("lastName", e.target.value)}
             errors={ errors?.lastName?.message }
           />
           <FormInput 
-            title="Email" 
+            title={ `${t('Common.Form.Fields.Email')}` } 
             type="email" 
-            placeholder="Digite seu email"
+            placeholder={ `${t('Common.Form.Placeholders.Email')}` }
             { ...register("email") }
             errors={ errors?.email?.message }
           />
           <FormInput 
-            title="Telefone" 
-            placeholder="Digite seu telefone"
+            title={ `${t('Common.Form.Fields.Phone')}` } 
+            placeholder={ `${t('Common.Form.Placeholders.Phone')}` }
             value={ formattedPhone }
             { ...register("phone") }
             onChange={ handleChangePhone }
@@ -122,9 +130,9 @@ export function UserRegister() {
             errors={ errors?.phone?.message }
           />
           <FormInput 
-            title="Senha" 
+            title={ `${t('Common.Form.Fields.Password')}` } 
             type={ showPassword ? "text" : "password" } 
-            placeholder="Digite sua senha"
+            placeholder={ `${t('Common.Form.Placeholders.Password')}` }
             { ...register("password") }
             icon={ 
               showPassword ? 
@@ -141,9 +149,9 @@ export function UserRegister() {
             errors={ errors?.password?.message }
           />
           <FormInput 
-            title="Confirmar Senha" 
+            title={ `${t('Common.Form.Fields.PasswordConfirmation')}` } 
             type={ showPassword ? "text" : "password" }
-            placeholder="Confirme sua senha"
+            placeholder={ `${t('Common.Form.Placeholders.PasswordConfirmation')}` }
             { ...register("confirmPassword") }
             icon={ 
               showPassword ? 
@@ -162,7 +170,10 @@ export function UserRegister() {
         </div>
 
         <div className="w-[90%] mt-8">
-          <FlatButton type="submit" title="Cadastrar" />
+          <FlatButton 
+            type="submit" 
+            title={ `${t('Common.Buttons.Register')}` } 
+          />
         </div>
       </form>
     </main>
