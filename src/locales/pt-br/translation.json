@@ -1,0 +1,63 @@
+{
+  "Common": {
+    "Form": {
+      "Errors": {
+        "FirstName": {
+          "Required": "O nome é obrigatório"
+        },
+        "LastName": {
+          "Required": "O sobrenome é obrigatório"
+        },
+        "Email": {
+          "Required": "O email é obrigatório",
+          "Invalid": "Email inválido"
+        },
+        "Phone": {
+          "Required": "O telefone é obrigatório"
+        },
+        "Password": {
+          "Required": "A senha é obrigatória"
+        },
+        "ConfirmPassword": {
+          "Required": "A confirmação de senha é obrigatória",
+          "Invalid": "As senhas devem ser iguais"
+        }
+      },
+      "Fields": {
+        "FirstName": "Nome",
+        "LastName": "Sobrenome",
+        "Email": "Email",
+        "Phone": "Telefone",
+        "Password": "Senha",
+        "PasswordConfirmation": "Confirmar Senha"
+      },
+      "Placeholders": {
+        "FirstName": "Digite seu nome",
+        "LastName": "Digite seu sobrenome",
+        "Email": "Digite seu email",
+        "Phone": "Digite seu telefone",
+        "Password": "Digite sua senha",
+        "PasswordConfirmation": "Confirme sua senha"
+      }
+    },
+    "Register": {
+      "Title": "Cadastro",
+      "ProfilePhoto": "Foto de Perfil"
+    },
+    "Buttons": {
+      "Back": "Voltar",
+      "Register": "Cadastrar"
+    }
+  },
+  "Login": {
+    "Buttons": {
+      "Login": "Entrar",
+      "GoogleLogin": "Conta Google"
+    },
+    "Texts": {
+      "LoginWith": "ou entrar com",
+      "DontHaveAnAccount": "Ainda não tem conta? Faça",
+      "YourRegistration": "seu cadastro"
+    }
+  }
+}
