@@ -17,7 +17,7 @@ function Input({
         htmlFor={title.split(' ')[0].toLowerCase()} 
         className="text-tertiary font-bold flex items-center gap-1"
       >
-        {title} {required && <span className="text-red-500 text-xl leading-none">*</span>}
+        {title} {required && <span className="text-red-500 text-2xl leading-none">*</span>}
       </label>
       <div className="w-full max-w-sm mx-auto relative rounded-4xl md:w-64 bg-white h-14 flex items-center px-3 border-2 border-secondary">
         <input 
