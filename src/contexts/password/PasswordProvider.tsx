@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { PasswordProviderProps } from "../../types";
+import { CustomProviderProps } from "../../types";
 import { PasswordContext } from "./PasswordContext";
 
-export const PasswordProvider = ({ children }: PasswordProviderProps) => {
+export const PasswordProvider = ({ children }: CustomProviderProps) => {
   const [ showPassword, setShowPassword ] = useState(false);
 
   function handleShowPassword() {
