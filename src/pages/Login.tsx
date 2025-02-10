@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from 'react-router';
 import { FormInput, FlatButton, IconButton } from '../components';
-import { useShowPassword } from '../hooks';
+import { useAuth, useShowPassword } from '../hooks';
 import { LoginFormInputProps } from '../types';
 import { loginSchema } from '../utils';
 import { useTranslation } from 'react-i18next';
@@ -21,6 +21,7 @@ export function Login() {
     formState: { errors } 
   } = useForm<LoginFormInputProps>({ resolver: yupResolver(loginSchema(t)) });
   const { showPassword } = useShowPassword();
+  const { login } = useAuth()
 
   async function onSubmit(data: LoginFormInputProps) {
     const userPayload = {
@@ -29,6 +30,8 @@ export function Login() {
     }
 
     console.log(userPayload);
+
+    await login(userPayload);
 
     setValue('email', '');
     setValue('password', '');
