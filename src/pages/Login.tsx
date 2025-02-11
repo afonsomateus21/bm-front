@@ -5,7 +5,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FormInput, FlatButton, IconButton } from '../components';
 import { useAuth, useShowPassword } from '../hooks';
 import { LoginFormInputProps } from '../types';
@@ -21,7 +21,8 @@ export function Login() {
     formState: { errors } 
   } = useForm<LoginFormInputProps>({ resolver: yupResolver(loginSchema(t)) });
   const { showPassword } = useShowPassword();
-  const { login } = useAuth()
+  const { login, loading } = useAuth()
+  const navigate = useNavigate();
 
   async function onSubmit(data: LoginFormInputProps) {
     const userPayload = {
@@ -29,12 +30,12 @@ export function Login() {
       password: data.password,
     }
 
-    console.log(userPayload);
-
     await login(userPayload);
 
     setValue('email', '');
     setValue('password', '');
+
+    navigate("/home");
   } 
 
   return (
@@ -85,7 +86,10 @@ export function Login() {
             errors={ errors?.password?.message }
           />
 
-          <FlatButton type='submit' title="Entrar" />
+          <FlatButton 
+            type='submit' 
+            title={ loading ? "Carregando" : "Entrar" }
+          />
 
           <div className="w-full flex items-center">
             <div className="w-full border-b border-black relative">
