@@ -6,7 +6,7 @@ export function ProtectedRoute() {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <Spinner />
+    return <Spinner color="#EF007F" />
   }
 
   if (!user) return <Navigate to="/login" replace />;
