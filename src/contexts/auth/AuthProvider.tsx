@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }: CustomProviderProps) => {
       if (accessToken && isTokenExpired(accessToken)) {
         await refreshAccessToken();
       }
-      getCurrentUser();
+      await getCurrentUser();
     };
   
     fetchUser();
