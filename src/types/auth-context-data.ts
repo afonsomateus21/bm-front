@@ -6,7 +6,7 @@ export interface AuthContextData {
   refreshToken: string | null;
   user: User | null | undefined;
   loading: boolean;
-  register: (registerInput: User) => Promise<User>;
+  createCustomer: (registerInput: User) => Promise<User | undefined>;
   login: (loginInput: LoginInput) => Promise<void>;
   logout: () => void;
   refreshAccessToken: () => Promise<void>;
