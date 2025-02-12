@@ -62,5 +62,13 @@
       "DontHaveAnAccount": "Ainda não tem conta? Faça",
       "YourRegistration": "seu cadastro"
     }
+  },
+  "Services": {
+    "Title": "Serviços",
+    "Description": "Visualizar todos os serviços e informações"
+  },
+  "Scheduling": {
+    "Title": "Agendamentos",
+    "Description": "Realizar ou visualizar agendamentos"
   }
 }
