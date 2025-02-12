@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../hooks";
-import { CustomerHomeOption, ProfilePhoto, TextSeparator } from "../components";
+import { CustomerHomeOption, IconButton, ProfilePhoto, TextSeparator } from "../components";
 import SchedulingImage from "../assets/scheduling-image.png";
 import ServicesImage from "../assets/services-image.png";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 export function CustomerHome() {
   const { user } = useAuth();
@@ -39,6 +40,16 @@ export function CustomerHome() {
           imageUrl={ ServicesImage }
           redirectTo="/services"
         />
+
+          <IconButton 
+            title="Sair"
+            icon={ 
+              <ExitToAppIcon 
+                htmlColor={'white'} 
+                fontSize={ 'large' }
+              /> 
+            } 
+          />
       </main>
     </div>
   );
