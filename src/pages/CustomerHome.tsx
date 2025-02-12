@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../hooks";
-import { ProfilePhoto } from "../components";
+import { ProfilePhoto, TextSeparator } from "../components";
 
 export function CustomerHome() {
   const { user } = useAuth();
@@ -20,6 +20,8 @@ export function CustomerHome() {
           photoUrl={ user?.photo } 
         />
       </header>
+
+      <TextSeparator text={ t('Common.HomeQuestion') } />
     </div>
   );
 }
