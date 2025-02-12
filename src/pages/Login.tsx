@@ -100,6 +100,7 @@ export function Login() {
           </div>
 
           <IconButton 
+            title="Conta Google"
             icon={ 
               <GoogleIcon 
                 htmlColor={'white'} 
