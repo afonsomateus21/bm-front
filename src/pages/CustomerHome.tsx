@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "../hooks";
 import { CustomerHomeOption, ProfilePhoto, TextSeparator } from "../components";
 import SchedulingImage from "../assets/scheduling-image.png";
+import ServicesImage from "../assets/services-image.png";
 
 export function CustomerHome() {
   const { user } = useAuth();
@@ -29,6 +30,13 @@ export function CustomerHome() {
           title="Agendamentos"
           description="Realizar ou visualizar agendamentos"
           imageUrl={ SchedulingImage }
+          redirectTo="/services"
+        />
+
+        <CustomerHomeOption 
+          title="Serviços"
+          description="Realizar ou visualizar agendamentos"
+          imageUrl={ ServicesImage }
           redirectTo="/services"
         />
       </main>
