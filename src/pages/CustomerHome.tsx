@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../hooks";
-import { CustomerHomeOption, IconButton, ProfilePhoto, TextSeparator } from "../components";
+import { CustomerHomeOption, HelpComponent, IconButton, ProfilePhoto, TextSeparator } from "../components";
 import SchedulingImage from "../assets/scheduling-image.png";
 import ServicesImage from "../assets/services-image.png";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -26,7 +26,7 @@ export function CustomerHome() {
 
       <TextSeparator text={ t('Common.HomeQuestion') } />
 
-      <main className="mt-10 flex-1">
+      <main className="mt-10 flex-1 flex flex-col justify-evenly">
         <CustomerHomeOption 
           title={ t('Scheduling.Title') }
           description={ t('Scheduling.Description') }
@@ -41,15 +41,17 @@ export function CustomerHome() {
           redirectTo="/services"
         />
 
-          <IconButton 
-            title="Sair"
-            icon={ 
-              <ExitToAppIcon 
-                htmlColor={'white'} 
-                fontSize={ 'large' }
-              /> 
-            } 
-          />
+        <HelpComponent />
+
+        <IconButton 
+          title="Sair"
+          icon={ 
+            <ExitToAppIcon 
+              htmlColor={'white'} 
+              fontSize={ 'large' }
+            /> 
+          } 
+        />
       </main>
     </div>
   );
