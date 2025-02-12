@@ -7,3 +7,4 @@ export type * from "./register-form-input-props";
 export type * from "./login-input"
 export type * from "./auth-context-data";
 export type * from "./user";
+export type * from "./profile-photo-props";
