@@ -1,13 +1,14 @@
 import { useTranslation } from "react-i18next";
 import { useAuth } from "../hooks";
-import { ProfilePhoto, TextSeparator } from "../components";
+import { CustomerHomeOption, ProfilePhoto, TextSeparator } from "../components";
+import SchedulingImage from "../assets/scheduling-image.png";
 
 export function CustomerHome() {
   const { user } = useAuth();
   const { t } = useTranslation();
 
   return (
-    <div className="p-7">
+    <div className="p-7 h-full flex flex-col">
       <header className="h-48 flex items-center justify-between">
         <div>
           <h1 className="text-2xl ">{ t('Common.WelcomeMessage') }</h1>
@@ -22,6 +23,15 @@ export function CustomerHome() {
       </header>
 
       <TextSeparator text={ t('Common.HomeQuestion') } />
+
+      <main className="mt-10 flex-1">
+        <CustomerHomeOption 
+          title="Agendamentos"
+          description="Realizar ou visualizar agendamentos"
+          imageUrl={ SchedulingImage }
+          redirectTo="/services"
+        />
+      </main>
     </div>
   );
 }
