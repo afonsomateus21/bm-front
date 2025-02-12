@@ -50,7 +50,9 @@
     },
     "WelcomeMessage": "Seja bem vinda,",
     "ProfileSubtitle": "Meu Perfil",
-    "HomeQuestion": "O que você deseja?"
+    "HomeQuestion": "O que você deseja?",
+    "HelpMessage": "Está com alguma dúvida?",
+    "KeepInTouch": "Entre em contato."
   },
   "Login": {
     "Buttons": {
