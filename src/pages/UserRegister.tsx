@@ -1,5 +1,5 @@
 import UploadFileRoundedIcon from '@mui/icons-material/UploadFileRounded';
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ChangeEvent, useState } from "react";
@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormInput, FlatButton } from '../components';
 import { RegisterFormInputProps } from '../types';
 import { formatPhone, registerSchema } from '../utils';
-import { useShowPassword } from '../hooks';
+import { useAuth, useShowPassword } from '../hooks';
 import { useTranslation } from 'react-i18next';
 
 export function UserRegister() {
@@ -28,6 +28,8 @@ export function UserRegister() {
   });
   const { showPassword } = useShowPassword();
   const [ formattedPhone, setFormattedPhone ] = useState("");
+  const { createCustomer, login } = useAuth();
+  const navigate = useNavigate();
 
   const firstName = watch("firstName", "");
   const lastName = watch("lastName", "");
@@ -43,18 +45,27 @@ export function UserRegister() {
     setValue(field, onlyLetters);
   }
 
-  function onSubmit(data: RegisterFormInputProps) {
-    console.log('entrou');
-    console.log(data);
+  async function onSubmit(data: RegisterFormInputProps) {
     const userPayload = {
+      firstName: data.firstName,
+      lastName: data.lastName,
       email: data.email,
       password: data.password,
+      phone: data.phone,
+    };
+    
+    try {        
+      await createCustomer(userPayload);
+    } catch(error) {
+      console.log(error);
+    } finally {
+      const loginInput = {
+        "email": userPayload.email,
+        "password": userPayload.password
+      };
+      await login(loginInput);
+      navigate("/home");
     }
-
-    console.log(userPayload);
-
-    setValue('email', '');
-    setValue('password', '');
   } 
 
   return (
