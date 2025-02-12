@@ -49,7 +49,8 @@
       "Register": "Cadastrar"
     },
     "WelcomeMessage": "Seja bem vinda,",
-    "ProfileSubtitle": "Meu Perfil"
+    "ProfileSubtitle": "Meu Perfil",
+    "HomeQuestion": "O que você deseja?"
   },
   "Login": {
     "Buttons": {
