@@ -1,6 +1,6 @@
 import { ButtonProps } from "../../types";
 
-export function IconButton({ icon, ...rest }: ButtonProps) {
+export function IconButton({ icon, title, ...rest }: ButtonProps) {
 	return(
 		<button 
 			{...rest}
@@ -10,7 +10,7 @@ export function IconButton({ icon, ...rest }: ButtonProps) {
 				{ icon }
 			</div>
 			<strong className="text-white text-xl">
-				Conta Google
+				{ title }
 			</strong>
 		</button>
 	);
