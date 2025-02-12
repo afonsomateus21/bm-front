@@ -27,15 +27,15 @@ export function CustomerHome() {
 
       <main className="mt-10 flex-1">
         <CustomerHomeOption 
-          title="Agendamentos"
-          description="Realizar ou visualizar agendamentos"
+          title={ t('Scheduling.Title') }
+          description={ t('Scheduling.Description') }
           imageUrl={ SchedulingImage }
           redirectTo="/services"
         />
 
         <CustomerHomeOption 
-          title="Serviços"
-          description="Realizar ou visualizar agendamentos"
+          title={ t('Services.Title') }
+          description={ t('Services.Description') }
           imageUrl={ ServicesImage }
           redirectTo="/services"
         />
