@@ -103,14 +103,26 @@ export const AuthProvider = ({ children }: CustomProviderProps) => {
     }
   }
 
-  async function register(userInput: User) {
-    console.log(userInput)
-    
-    return userInput;
+  async function createCustomer(userInput: User) {
+    try {
+      const customer = {
+        "first_name": userInput.firstName,
+        "last_name": userInput.lastName,
+        "email": userInput.email,
+        "phone": userInput.phone,
+        "password": userInput.password,
+        "photo": userInput.photo
+      }
+      const response = await api.post("/auth/user/customer", customer);
+        
+      return response.data;
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   return (
-    <AuthContext.Provider value={{ accessToken, refreshToken, user, loading, refreshAccessToken, login, logout, register }}>
+    <AuthContext.Provider value={{ accessToken, refreshToken, user, loading, refreshAccessToken, login, logout, createCustomer }}>
       { children }
     </AuthContext.Provider>
   )
