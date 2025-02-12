@@ -10,7 +10,7 @@ export function CustomerHomeOption({ title, description, imageUrl, redirectTo } 
 
   return (
     <div 
-      className="h-52 w-full rounded-2xl relative bg-cover shadow-2xl active:scale-105 transition-transform duration-300"
+      className="h-44 w-full rounded-2xl relative bg-cover shadow-2xl active:scale-105 transition-transform duration-300"
       style={{ backgroundImage: `url(${imageUrl})` }}
       onClick={() => handleRedirect()}
     >
