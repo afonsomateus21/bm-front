@@ -47,7 +47,9 @@
     "Buttons": {
       "Back": "Voltar",
       "Register": "Cadastrar"
-    }
+    },
+    "WelcomeMessage": "Seja bem vinda,",
+    "ProfileSubtitle": "Meu Perfil"
   },
   "Login": {
     "Buttons": {
