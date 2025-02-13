@@ -1,11 +1,10 @@
-import UploadFileRoundedIcon from '@mui/icons-material/UploadFileRounded';
 import { Link, useNavigate } from "react-router";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FormInput, FlatButton } from '../components';
+import { FormInput, FlatButton, PhotoInput } from '../components';
 import { RegisterFormInputProps } from '../types';
 import { formatPhone, registerSchema } from '../utils';
 import { useAuth, useShowPassword } from '../hooks';
@@ -22,12 +21,13 @@ export function UserRegister() {
   } = useForm<RegisterFormInputProps>({
     defaultValues: {
       firstName: "",
-      lastName: ""
+      lastName: "",
     },
     resolver: yupResolver(registerSchema(t))
   });
   const { showPassword } = useShowPassword();
   const [ formattedPhone, setFormattedPhone ] = useState("");
+  const [ uploadedProfileImage, setUploadedProfileImage ] = useState("");
   const { createCustomer, login } = useAuth();
   const navigate = useNavigate();
 
@@ -43,6 +43,13 @@ export function UserRegister() {
   function handleTextChange(field: keyof RegisterFormInputProps, value: string) {
     const onlyLetters = value.replace(/\d/g, "");
     setValue(field, onlyLetters);
+  }
+
+  async function handleChangePhoto(event: ChangeEvent<HTMLInputElement>) {
+    if (event.target.files && event.target.files[0]) {
+      const img = URL.createObjectURL(event.target.files[0]);
+      setUploadedProfileImage(img);
+    }
   }
 
   async function onSubmit(data: RegisterFormInputProps) {
@@ -82,31 +89,11 @@ export function UserRegister() {
         className="h-4/5 flex flex-col items-center justify-evenly"
         onSubmit={ handleSubmit(onSubmit) }
       >
-        <div className="flex flex-col items-center">
-          <label 
-            className="border-2 border-secondary border-dashed rounded-xl w-40 h-40 cursor-pointer relative shadow-xl"
-          >
-            <UploadFileRoundedIcon 
-              sx={{ 
-                fontSize: 80, 
-                color: '#333333',
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)'
-              }} 
-            />
-            <input 
-              className="opacity-0"
-              type="file"  
-            />
-          </label>
-
-          <strong className="mt-5 text-tertiary">
-            { t('Common.Register.ProfilePhoto') }
-          </strong>
-        </div>
-
+        <PhotoInput 
+          photoUrl={ uploadedProfileImage }
+          { ...register("profilePhoto") }
+          onChange={ handleChangePhoto }
+        />
         <div className="w-full flex flex-col items-center h-[500px] overflow-y-scroll p-2 gap-6 mt-5">
           <FormInput 
             title={ `${t('Common.Form.Fields.FirstName')}` }
