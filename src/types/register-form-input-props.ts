@@ -5,4 +5,5 @@ export interface RegisterFormInputProps {
   phone: string
   password: string;
   confirmPassword: string;
+  profilePhoto?: string;
 }
