@@ -18,11 +18,11 @@ export function CustomerHomeOption({ title, description, imageUrl, redirectTo } 
         className="h-full w-full rounded-2xl absolute"
         style={{ backgroundColor: 'rgba(0, 0, 0, 0.55)' }}
       >
-        <div className="w-full h-full relative p-5 flex flex-col justify-center gap-3">
-          <h1 className="text-4xl text-white font-bold">
+        <div className="w-full h-full relative p-7 flex flex-col justify-end">
+          <h1 className="text-3xl text-white font-extrabold">
             { title }
           </h1>
-          <span className="text-xl text-white font-bold">
+          <span className="text-md text-white font-medium mr-10">
             { description }
           </span>
         </div>

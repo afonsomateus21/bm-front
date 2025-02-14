@@ -8,25 +8,29 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 export function CustomerHome() {
   const { user } = useAuth();
   const { t } = useTranslation();
+  const formattedName = user
+    ? `${user.firstName ? user.firstName.split(" ")[0] : ""} ${user.lastName ? user.lastName.split(" ")[0] : ""}`.trim()
+    : "";
+  const photoUrl = user?.photo ? URL.createObjectURL(user.photo) : undefined;
 
   return (
-    <div className="p-7 h-full flex flex-col">
-      <header className="h-48 flex items-center justify-between">
+    <div className="p-9 h-full flex flex-col">
+      <header className="h-48 flex items-center justify-between gap-5">
         <div>
-          <h1 className="text-2xl ">{ t('Common.WelcomeMessage') }</h1>
-          <strong className="text-4xl ">
-            { `${user?.firstName} ${user?.lastName}!` }
+          <h1 className="text-2xl font-medium">{ t('Common.WelcomeMessage') }</h1>
+          <strong className="text-4xl font-extrabold">
+            { formattedName }!
           </strong>
         </div>
         <ProfilePhoto 
           profileName={ t('Common.ProfileSubtitle') }
-          photoUrl={ user?.photo } 
+          photoUrl={ photoUrl } 
         />
       </header>
 
       <TextSeparator text={ t('Common.HomeQuestion') } />
 
-      <main className="mt-10 flex-1 flex flex-col justify-evenly">
+      <main className="mt-5 flex-1 flex flex-col justify-evenly">
         <CustomerHomeOption 
           title={ t('Scheduling.Title') }
           description={ t('Scheduling.Description') }
