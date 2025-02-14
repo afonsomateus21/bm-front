@@ -129,6 +129,8 @@ export const AuthProvider = ({ children }: CustomProviderProps) => {
       return response.data;
     } catch(error) {
       console.log(error);
+    } finally {
+      await login({ email: userInput.email!, password: userInput.password! })
     }
   }
 
