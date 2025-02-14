@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ChangeEvent, useState } from "react";
@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 export function UserRegister() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const { 
     register, 
     setValue, 
@@ -72,12 +73,13 @@ export function UserRegister() {
   } 
 
   return (
-    <main className="h-screen flex flex-col justify-evenly overflow-hidden">
-      <Link to="/">
-        <span className="underline text-md ml-6">
-          { t('Common.Buttons.Back') }
-        </span>
-      </Link>
+    <main className="h-screen flex flex-col justify-evenly overflow-hidden px-5">
+      <button 
+        onClick={() => navigate(-1)}
+        className="underline text-md ml-6 self-start"
+      >
+        { t('Common.Buttons.Back') }
+      </button>
       <h1 className="text-4xl text-center font-bold">
         { t('Common.Register.Title') }
       </h1>
