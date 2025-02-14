@@ -5,7 +5,7 @@ import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormInput, FlatButton, PhotoInput } from '../components';
-import { RegisterFormInputProps } from '../types';
+import { RegisterFormInputProps, User } from '../types';
 import { formatPhone, registerSchema } from '../utils';
 import { useAuth, useShowPassword } from '../hooks';
 import { useTranslation } from 'react-i18next';
@@ -47,18 +47,22 @@ export function UserRegister() {
 
   async function handleChangePhoto(event: ChangeEvent<HTMLInputElement>) {
     if (event.target.files && event.target.files[0]) {
-      const img = URL.createObjectURL(event.target.files[0]);
+      const file = event.target.files[0];
+      const img = URL.createObjectURL(file);
       setUploadedProfileImage(img);
+
+      setValue("profilePhoto", file);
     }
   }
 
   async function onSubmit(data: RegisterFormInputProps) {
-    const userPayload = {
+    const userPayload: User = {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       password: data.password,
       phone: data.phone,
+      photo: data.profilePhoto
     };
     
     try {        
@@ -67,8 +71,8 @@ export function UserRegister() {
       console.log(error);
     } finally {
       const loginInput = {
-        "email": userPayload.email,
-        "password": userPayload.password
+        "email": userPayload.email!,
+        "password": userPayload.password!
       };
       await login(loginInput);
       navigate("/home");
@@ -91,7 +95,6 @@ export function UserRegister() {
       >
         <PhotoInput 
           photoUrl={ uploadedProfileImage }
-          { ...register("profilePhoto") }
           onChange={ handleChangePhoto }
         />
         <div className="w-full flex flex-col items-center h-[500px] overflow-y-scroll p-2 gap-6 mt-5">
