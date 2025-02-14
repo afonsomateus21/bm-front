@@ -11,6 +11,6 @@ export interface User {
   password?: string;
   type?: UserType;
   phone?: string;
-  photo?: string;
+  photo?: File;
   googleSub?: number;
 }
