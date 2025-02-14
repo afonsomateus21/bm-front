@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { ChangeEvent, useState } from "react";
@@ -28,8 +28,7 @@ export function UserRegister() {
   const { showPassword } = useShowPassword();
   const [ formattedPhone, setFormattedPhone ] = useState("");
   const [ uploadedProfileImage, setUploadedProfileImage ] = useState("");
-  const { createCustomer, login } = useAuth();
-  const navigate = useNavigate();
+  const { createCustomer } = useAuth();
 
   const firstName = watch("firstName", "");
   const lastName = watch("lastName", "");
@@ -69,13 +68,6 @@ export function UserRegister() {
       await createCustomer(userPayload);
     } catch(error) {
       console.log(error);
-    } finally {
-      const loginInput = {
-        "email": userPayload.email!,
-        "password": userPayload.password!
-      };
-      await login(loginInput);
-      navigate("/home");
     }
   } 
 
