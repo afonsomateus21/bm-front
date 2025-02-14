@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services";
 import { CustomProviderProps, LoginInput, User } from "../../types";
 import { AuthContext } from "./AuthContext";
-import { isTokenExpired } from "../../utils";
+import { handleUploadImageToStorage, isTokenExpired } from "../../utils";
 
 
 export const AuthProvider = ({ children }: CustomProviderProps) => {
@@ -105,13 +105,24 @@ export const AuthProvider = ({ children }: CustomProviderProps) => {
 
   async function createCustomer(userInput: User) {
     try {
+      let profilePhotoUrl: string | null = null;
+    
+      if (userInput.photo) {
+        try {
+          profilePhotoUrl = await handleUploadImageToStorage(userInput.photo);
+        } catch (uploadError) {
+          console.error("Erro ao fazer upload da imagem:", uploadError);
+          throw new Error("Erro ao enviar a foto de perfil. Tente novamente.");
+        }
+      }
+
       const customer = {
         "first_name": userInput.firstName,
         "last_name": userInput.lastName,
         "email": userInput.email,
         "phone": userInput.phone,
         "password": userInput.password,
-        "photo": userInput.photo
+        "photo": profilePhotoUrl
       }
       const response = await api.post("/auth/user/customer", customer);
         
