@@ -111,8 +111,6 @@ As seguintes tecnologias foram utilizadas na construção do front-end:
   <li>Material Design Icons</li>
 </ul>
 
----
-
 ## 📦 Instalação
 
 ### 1. **Clone o repositório**
@@ -149,8 +147,6 @@ O projeto estará disponível em:
 
 ```
 
----
-
 ## ▶️ Como executar a aplicação
 
 ### 1. **Inicie o servidor de desenvolvimento**
@@ -161,8 +157,6 @@ npm run dev
 ### 2. **Acesse a aplicação**
 Abra o navegador e acesse:  
 **http://localhost:5173**
-
----
 
 ## 📝 Licença
 Este projeto está licenciado sob a **MIT License**.
