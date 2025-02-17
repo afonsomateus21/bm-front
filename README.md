@@ -99,9 +99,6 @@ Atualmente, **41,67%** dos requisitos foram implementados.
   </tbody>
 </table>
 
-
-Aqui está uma versão do **README.md** para o repositório do front-end do **Beauty Manager**, inspirado no README da API que você forneceu. O texto foi adaptado para refletir as tecnologias e a estrutura do front-end, que utiliza **React**, **TypeScript** e **Vite**.
-
 ## 🛠️ Tecnologias Utilizadas
 As seguintes tecnologias foram utilizadas na construção do front-end:
 <ul>
