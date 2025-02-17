@@ -106,7 +106,6 @@ As seguintes tecnologias foram utilizadas na construção do front-end:
   <li>TypeScript</li>
   <li>Vite</li>
   <li>React Router</li>
-  <li>Axios</li>
   <li>Tailwind CSS</li>
   <li>Material Design Icons</li>
 </ul>
