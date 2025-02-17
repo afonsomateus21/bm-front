@@ -116,7 +116,8 @@ As seguintes tecnologias foram utilizadas na construção do front-end:
 ### 1. **Clone o repositório**
 ```bash
 $ git clone https://github.com/afonsomateus21/bm-web.git
-cd beauty-manager-front
+$ git clone git@github.com:afonsomateus21/bm-web.git se utilizar SSH
+cd bm-web
 ```
 
 ### 2. **Instale as dependências**
